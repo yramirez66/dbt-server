@@ -50,3 +50,6 @@ RUN pip install --force-reinstall MarkupSafe==2.0.1 # TODO: find better fix for 
 
 COPY ./dbt_server /usr/src/app/dbt_server
 COPY ./dbt_worker /usr/src/app/dbt_worker
+
+EXPOSE 8080
+CMD ["uvicorn", "dbt_server.server:app", "--host", "127.0.0.1", "--port", "8580"]
