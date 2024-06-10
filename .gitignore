@@ -10,8 +10,6 @@
 /docs/_build/
 /src/*.egg-info/
 __pycache__/
-working-dir/
-target/
 sql_app.db
 /env
 /venv

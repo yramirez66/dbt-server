@@ -1,0 +1,3 @@
+Id,Date,Type,Description,EntityId,Value,Context,Domain,Origin
+1,2023-10-08,product,"A description of the first item",1001,19.99,"Some context","Retail","Manufacturer"
+2,2023-10-08,service,"A description of the second item",1002,299.99,"Different context","Finance","Provider"
