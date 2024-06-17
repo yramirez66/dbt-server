@@ -11,9 +11,9 @@ from unittest.mock import MagicMock
 from unittest import IsolatedAsyncioTestCase
 from unittest import TestCase
 
-TEST_COMMAND = ["abc"]
-TEST_DIR = "/test"
-TEST_COMMAND_WITH_PROJECT_DIR = ["abc", "--project-dir", TEST_DIR]
+TEST_COMMAND = ["run"]
+TEST_DIR = "/Users/Yesenia.Ramirez/Desktop/66degrees/Internal_Project_Programs/IOTA_Repos/DEB-166/data-plaforms-dbt-base/shared"
+TEST_COMMAND_WITH_PROJECT_DIR = ["run", "--project-dir", TEST_DIR]
 TEST_TASK_ID = "task_id"
 TEST_URL = "test_url"
 TEST_LOG_DIR = "/log"
@@ -33,10 +33,10 @@ mock_task_obj.id = TEST_TASK_ID
 class TestPostInvocationRequest(TestCase):
     def test_new_success(self):
         # Project directory from request field.
-        PostInvocationRequest(command=["abc"], project_dir="abc")
+        PostInvocationRequest(command=["run"], project_dir="run")
         # Project directory from env.
         DBT_PROJECT_DIRECTORY.set("/test_dir")
-        PostInvocationRequest(command=["abc"])
+        PostInvocationRequest(command=["run"])
         # Project directory from command.
         DBT_PROJECT_DIRECTORY.set(None)
         PostInvocationRequest(command=["--project-dir"])
@@ -44,7 +44,7 @@ class TestPostInvocationRequest(TestCase):
     def test_validate_error_duplicated_project_dir(self):
         DBT_PROJECT_DIRECTORY.set(None)
         with self.assertRaisesRegex(Exception, "Confliction") as _:
-            PostInvocationRequest(command=["--project-dir"], project_dir="abc")
+            PostInvocationRequest(command=["--project-dir"], project_dir="run")
 
 
 @patch("dbt_server.views.invoke")
@@ -59,7 +59,7 @@ class TestPostInvocation(IsolatedAsyncioTestCase):
         )
         resp = await post_invocation(
             PostInvocationRequest(
-                command=["abc"], project_dir=TEST_DIR, callback_url=TEST_URL
+                command=["run"], project_dir=TEST_DIR, callback_url=TEST_URL
             )
         )
         mock_invoke.apply_async.assert_called_once_with(

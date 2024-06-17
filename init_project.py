@@ -256,6 +256,6 @@ state_id: {state_id}
 project directory: {project_dir}
 version_check: true,
 profile: shared,
-target: /Users/Yesenia.Ramirez/Desktop/66degrees/Internal Projects:Programs/IOTA-Repos/DEB-166/data-plaforms-dbt-base/shared/target
+target: {project_dir}/target
 """
 )
