@@ -1,1 +1,1 @@
-dbt seed
+SELECT * FROM d_date

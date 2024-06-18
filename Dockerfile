@@ -1,11 +1,12 @@
 # python:3.8-slim-bullseye
-ARG BASE_IMAGE=python@sha256:bb908c726535fc6787a69d4ef3cdb5ee90dc5edeae56da3181b2108539a5eb64
+ARG BASE_IMAGE=python@sha256:4502482bdbd43fb51f3f5ca54a7303f3dbcae66a39414ebdf6ef57e4234bcc37
 FROM $BASE_IMAGE
 
 ARG DBT_PIP_FLAGS
 ARG DBT_CORE_PACKAGE
 ARG DBT_DATABASE_ADAPTER_PACKAGE
 ARG DATADOG_PACKAGE
+ARG PRJ_NAME=iota-dev-66d-20231205
 
 RUN apt-get -y update && apt-get -y upgrade && \
   apt-get -y update --fix-missing && \
@@ -51,5 +52,5 @@ RUN pip install --force-reinstall MarkupSafe==2.0.1 # TODO: find better fix for 
 COPY ./dbt_server /usr/src/app/dbt_server
 COPY ./dbt_worker /usr/src/app/dbt_worker
 
-EXPOSE 8080
-CMD ["uvicorn", "dbt_server.server:app", "--host", "127.0.0.1", "--port", "8580"]
+EXPOSE 8580
+CMD ["uvicorn", "dbt_server.server:app", "--reload", "--host", "127.0.0.1", "--port", "8580"]

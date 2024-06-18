@@ -319,7 +319,7 @@ async def post_invocation(args: PostInvocationRequest):
 
     try:
         logger.info(f"Invoke: {command}, task_id: {task_id}")
-        invoke.apply_async(
+        invoke.apply(
             args=[command, project_dir, args.callback_url], task_id=task_id
         )
     except Exception as e:
