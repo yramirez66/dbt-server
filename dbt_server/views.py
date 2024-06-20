@@ -269,6 +269,7 @@ def get_manifest_metadata(state):
 class PostInvocationRequest(BaseModel):
     # Dbt command that will be sent to dbt worker for execution, e.g. [
     #   "--log-format", "json", "run", "--profiles_dir", "testdir"].
+    PRJ_NAME: str
     command: List[str]
     # If set, dbt worker will use it as task_id, otherwise dbt server will
     # generate a random one and returned. Notice client needs to ensure task_id
@@ -309,6 +310,7 @@ class PostInvocationResponse(BaseModel):
 @app.post("/invocations")
 async def post_invocation(args: PostInvocationRequest):
     """Accepts user dbt invocation request, creates a task in task queue."""
+    os.environ['PRJ_NAME'] = args.PRJ_NAME
     command = deepcopy(args.command)
     project_dir = resolve_project_dir(command, args.project_dir)
     append_project_dir(command, args.project_dir)
