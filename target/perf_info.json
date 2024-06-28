@@ -1,66 +1,40 @@
 {
     "path_count": 231,
-    "parsed_path_count": 231,
-    "static_analysis_path_count": 5,
-    "static_analysis_parsed_path_count": 2,
+    "parsed_path_count": 0,
+    "static_analysis_path_count": 0,
+    "static_analysis_parsed_path_count": 0,
     "is_partial_parse_enabled": true,
     "is_static_analysis_enabled": true,
-    "read_files_elapsed": 0.07892505300696939,
-    "load_macros_elapsed": 1.6597327230047085,
-    "parse_project_elapsed": 0.6922542340034852,
-    "patch_sources_elapsed": 6.61700323689729e-06,
-    "process_manifest_elapsed": 0.05009695499757072,
-    "load_all_elapsed": 2.571396667000954,
+    "read_files_elapsed": 0.07663913300348213,
+    "load_all_elapsed": 0.15635609300079523,
     "projects": [
         {
             "project_name": "shared",
-            "elapsed": 0.6650937819940737,
-            "parsers": [
-                {
-                    "parser": "model",
-                    "elapsed": 0.03905702599877259,
-                    "parsed_path_count": 5
-                },
-                {
-                    "parser": "seed",
-                    "elapsed": 0.023447295003279578,
-                    "parsed_path_count": 3
-                },
-                {
-                    "parser": "test",
-                    "elapsed": 0.595829108999169,
-                    "parsed_path_count": 1
-                }
-            ],
-            "parsed_path_count": 9
+            "elapsed": 0.0,
+            "parsers": [],
+            "parsed_path_count": 0
         },
         {
             "project_name": "dbt_bigquery",
-            "elapsed": 0.006252268001844641,
+            "elapsed": 0.0,
             "parsers": [],
             "parsed_path_count": 0
         },
         {
             "project_name": "dbt",
-            "elapsed": 0.0075306970029487275,
-            "parsers": [
-                {
-                    "parser": "doc",
-                    "elapsed": 0.0003056459972867742,
-                    "parsed_path_count": 1
-                }
-            ],
-            "parsed_path_count": 1
+            "elapsed": 0.0,
+            "parsers": [],
+            "parsed_path_count": 0
         },
         {
             "project_name": "dbt_date",
-            "elapsed": 0.00531606800359441,
+            "elapsed": 0.0,
             "parsers": [],
             "parsed_path_count": 0
         },
         {
             "project_name": "dbt_expectations",
-            "elapsed": 0.007807289999618661,
+            "elapsed": 0.0,
             "parsers": [],
             "parsed_path_count": 0
         }
