@@ -140,9 +140,10 @@ def get_project_paths(project_dir):
     """
     dbt_project_yml_path = get_projects_yml_path(project_dir)
     dbtignore_path = os.path.join(project_dir, ".dbtignore")
+    dbt_profiles_yml_path = os.path.join(project_dir, "profiles.yml")
     project_config = get_project_config(dbt_project_yml_path)
 
-    all_paths = [dbt_project_yml_path, dbtignore_path]
+    all_paths = [dbt_profiles_yml_path, dbt_project_yml_path, dbtignore_path]
     for key, key_info in PROJECT_PATH_KEYS.items():
         candidate_keys = [key] + key_info["aliases"]
         default = key_info.get("default", [])

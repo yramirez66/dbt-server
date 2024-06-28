@@ -185,6 +185,14 @@ def _list_all_task_ids() -> List[str]:
 
 @app.post("/ready")
 async def ready():
+    logger.info("""
+    Project Information: 
+    state_id: fa5db404f577fe9d1f9fec007e13c37c
+    project directory: ./usr/src/app/working-dir/state-fa5db404f577fe9d1f9fec007e13c37c
+    version_check: true,
+    profile: shared,
+    target: ./usr/src/app/working-dir/state-fa5db404f577fe9d1f9fec007e13c37c/target
+    """)
     return JSONResponse(status_code=200, content={})
 
 

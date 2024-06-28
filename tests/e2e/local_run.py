@@ -4,7 +4,7 @@
 # Example run:
 # # Under root directory.
 # python3 -m tests.e2e.local_run --local_task_db_path=working-dir/sql_app.db \
-# --dbt_local_server_port=8580 --dbt_project_path=tests/e2e/fixtures/jaffle_shop
+# --dbt_local_server_port=8080 --dbt_project_path=tests/e2e/fixtures/jaffle_shop
 #
 from absl import app
 from absl import flags
@@ -21,7 +21,7 @@ flags.DEFINE_integer(
 )
 
 flags.DEFINE_integer(
-    "dbt_local_server_port", 8580, "Dbt local server port for testing."
+    "dbt_local_server_port", 8080, "Dbt local server port for testing."
 )
 
 flags.DEFINE_string(

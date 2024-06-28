@@ -35,6 +35,7 @@ RUN groupadd celery && useradd celery -g celery
 RUN /usr/src/app/bash/ubuntu-setup-redis.sh
 
 COPY requirements.txt /usr/src/app
+COPY dev-requirements.txt /usr/src/app
 
 RUN pip install --upgrade pip
 
@@ -47,10 +48,17 @@ RUN pip install                     \
     ${DBT_DATABASE_ADAPTER_PACKAGE} \
     ${DATADOG_PACKAGE}
 
+RUN pip install                     \
+    --no-cache-dir                  \
+    --upgrade                       \
+    -r dev-requirements.txt         
+
 RUN pip install --force-reinstall MarkupSafe==2.0.1 # TODO: find better fix for this
 
 COPY ./dbt_server /usr/src/app/dbt_server
 COPY ./dbt_worker /usr/src/app/dbt_worker
+COPY ./working-dir /usr/src/app/working-dir
+COPY ../shared /usr/src/app/dbt_commons
 
-EXPOSE 8580
+EXPOSE 8080
 CMD ["uvicorn", "dbt_server.server:app", "--reload", "--host", "127.0.0.1", "--port", "8580"]
