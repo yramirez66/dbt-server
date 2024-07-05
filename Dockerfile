@@ -60,4 +60,4 @@ COPY ./dbt_worker /usr/src/app/dbt_worker
 COPY ./working-dir /usr/src/app/working-dir
 
 EXPOSE 8080
-CMD ["uvicorn", "dbt_server.server:app", "--reload", "--host", "127.0.0.1", "--port", "8580"]
+CMD ["uvicorn", "dbt_server.server:app", "--reload", "--host", "0.0.0.0", "--port", "8080"]
