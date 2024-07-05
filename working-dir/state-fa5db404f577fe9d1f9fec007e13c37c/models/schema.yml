@@ -1,0 +1,515 @@
+version: 2
+
+models:
+  - name: d_date
+    description: "Date dimension model"
+    columns:
+      - name: pk_id
+        description: "The primary key for this table"
+        data_type: byte
+        constraints:
+          - type: not_null
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bytes
+      - name: full_date
+        description: "A valid full YYYY-MM-DD date"
+        data_type: date
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+      - name: num_day_of_week
+        description: "Numeric day of week, 1-7"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: day
+        description: "This is the number day of month, 02/01/1999, day = 1"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: day_of_week_name
+        description: "This column is the day of the week name"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: day_of_week_short
+        description: "The abbreviated day of the week"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: num_day_of_year
+        description: "Numeric day of year"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: week_of_month
+        description: "Numeric week of month"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: week_of_year
+        description: "Numeric week of year"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: numeric_month
+        description: "Numeric Month"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: month_name
+        description: "Name of the month"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: month_name_short
+        description: "Abbreviated name of the month"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: year
+        description: "This is the year"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: quarter
+        description: "This is the quarter"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: year_month
+        description: "The year and month in format YYYY-MM"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: is_weekend
+        description: "Checks if day is a weekend day"
+        data_type: boolean
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: same_date_last_year
+        description: "Date for the same day the previous year, for the value in the day column"
+        data_type: date
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+      - name: same_date_last_week
+        description: "Date for the same day the previous week, for the value in the day column"
+        data_type: date
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+      - name: isdst
+        description: ""
+        data_type: boolean
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: suffix
+        description: "The suffix of the date name"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: weekday_firstletter
+        description: "The first letter of the weekday"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: month_firstletter
+        description: "The first letter of the month"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: is_leap_year
+        description: "If the current year is a leap year"
+        data_type: boolean
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+  - name: d_time
+    description: "Time dimension model"
+    columns:
+      - name: pk_id
+        description: "The primary key for this table"
+        data_type: byte
+        constraints:
+          - type: not_null
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bytes
+      - name: hour
+        description: "The hour of the time"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: minute
+        description: "The minute of the time"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: ampm
+        description: "AM or PM designation"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: is_morning
+        description: "Indicates if it's in the morning (AM)"
+        data_type: boolean
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: is_afternoon
+        description: "Indicates if it's in the afternoon"
+        data_type: boolean
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: is_evening
+        description: "Indicates if it's in the evening"
+        data_type: boolean
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: is_night
+        description: "Indicates if it's in the night (PM)"
+        data_type: boolean
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: hhmm
+        description: "Hour and minute in HH:MM format"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: hhmmampm
+        description: "Hour, minute and AM/PM, in HH:MM AM/PM format"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: offset_hours
+        description: "Time zone offset in hours. Default is UTC."
+        data_type: int
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: offset_minutes
+        description: "Time zone offset in minutes. Default is UTC."
+        data_type: int
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+  - name: d_geographic
+    description: "Geographic dimension model"
+    columns:
+      - name: pk_id
+        description: "The primary key for this table"
+        data_type: byte
+        constraints:
+          - type: not_null
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bytes
+      - name: country_name
+        description: "The country's name"
+        data_type: string
+        constraints:
+          - type: not_null        
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: state_name
+        description: "The state's name"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: city_name
+        description: "The city's name"
+        data_type: string
+        constraints:
+          - type: not_null        
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: coordinates.latitude_amt
+        description: "The latitude coordinate"
+        data_type: float
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+      - name: coordinates.longitude_amt
+        description: "The longitutde coordinate"
+        data_type: float
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+      - name: coordinates.elevation_amt
+        description: "The elevation coordinate, if applicable"
+        data_type: float
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+      - name: coordinates.depth_amt
+        description: "The depth coordinate, if applicable"
+        data_type: float
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+  - name: d_domain
+    description: "Domain dimension model"
+    columns:
+      - name: pk_id
+        description: "The primary key for this table"
+        data_type: byte
+        constraints:
+          - type: not_null
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bytes
+      - name: event.date
+        description: "The date and time of the event"
+        data_type: date
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+      - name: event.type
+        description: "Type of event"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: event.domain_desc
+        description: "Description or additional information about the event, if available."
+        data_type: string
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: event.entity_id
+        description: "ID for an entity associated with the event"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: event.value
+        description: "Description or additional information about the event, if available."
+        data_type: float
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+      - name: event.context
+        description: "Description or additional information about the event, if available."
+        data_type: string
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: event.domain
+        description: "Description or additional information about the event, if available."
+        data_type: string
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: event.origin
+        description: "Description or additional information about the event, if available."
+        data_type: string
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+  - name: d_utility
+    description: "Utility dimension model"
+    columns:
+      - name: pk_id
+        description: "The primary key for this table"
+        data_type: byte
+        constraints:
+          - type: not_null
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bytes
+      - name: enumerator_name
+        description: "Unique naming convention for the enumerator"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: enum_definitions
+        description: "Enum value definition or description"
+        data_type: string
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: offset
+        description: "The offset value for the enum"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: ordinal
+        description: "The ordinal value for the enum"
+        data_type: int
+        constraints:
+          - type: not_null
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
