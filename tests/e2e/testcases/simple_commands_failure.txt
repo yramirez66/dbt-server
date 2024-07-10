@@ -1,3 +1,0 @@
-wrongcommand
-docs wrongcommand
-build --vars 'test_var: "string"'

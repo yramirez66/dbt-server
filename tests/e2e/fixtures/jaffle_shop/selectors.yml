@@ -1,5 +1,0 @@
-# Testing purpose.
-selectors:
-  - name: test_selector
-    definition:
-      'stg_customers+'
