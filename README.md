@@ -4,7 +4,11 @@ Create DBTSERVER for your project:
 ```
 cookiecutter gh:yramirez66/dbt-server
 ```
-
+You will be prompted to insert the following information:
+```
+    "repo_name": "ClientName"
+```
+If nothing is parsed, the default "ClientName" will be applied.
 STEP 2:
 Create and Start Virtual Environment: 
 ```
