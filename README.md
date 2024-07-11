@@ -6,7 +6,7 @@ cookiecutter gh:yramirez66/dbt-server
 ```
 You will be prompted to insert the following information:
 ```
-    "repo_name": "ClientName"
+"repo_name": "ClientName"
 ```
 If nothing is parsed, the default "ClientName" will be applied.
 
