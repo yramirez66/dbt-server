@@ -26,7 +26,7 @@ pip install -r requirements.txt -r dev-requirements.txt
 ```
 
 
-Step 4:
+STEP 4:
 Push the project you will be working with into dbt server:
  
 Begin by cloning the data-platforms-dbt-base project:
@@ -57,12 +57,12 @@ target: {project_dir}/target
 # To Deploy into Cloud Run:
 Before continuing ensure there is a repository available in Artifact Registry named dbt-server.
 
-Step 1: Begin by building a DBT-SERVER image:
+STEP 1: Begin by building a DBT-SERVER image:
 ```
 docker build -f Dockerfile . -t dbt-server-1.7.0:latest --build-arg DBT_CORE_VERSION=1.7.0 --build-arg DBT_DATABASE_ADAPTER_PACKAGE=dbt-bigquery
 ```
 
-Step 2: Push local docker image to Google cloud artifact registry by running the following commands:
+STEP 2: Push local docker image to Google cloud artifact registry by running the following commands:
 ```
 docker tag dbt-server-1.7.0:latest us-central1-docker.pkg.dev/iota-dev-66d-20231205/dbt-server/dbt_server_image:latest
 docker push us-central1-docker.pkg.dev/iota-dev-66d-20231205/dbt-server/dbt_server_image:latest
@@ -72,6 +72,6 @@ docker push us-central1-docker.pkg.dev/iota-dev-66d-20231205/dbt-server/dbt_serv
 Somethings to consider include the following:
 - Ensure there is a default	VPC network and at least one default subnet with the appropriate rules 
 - Add a redis instance into the cloud run instance:
-    - Step 1: Click on the Cloud Run Instance
-    - Step 2: Go into the Integration tab in the instance 
-    - Step 3: Click on the Redis - Google Cloud Memorystore option and create!
+    - STEP 1: Click on the Cloud Run Instance
+    - STEP 2: Go into the Integration tab in the instance 
+    - STEP 3: Click on the Redis - Google Cloud Memorystore option and create!
