@@ -2,7 +2,7 @@
 STEP 1:
 Create DBTSERVER for your project:
 ```
-    cookiecutter gh:yramirez66/dbt-server
+cookiecutter gh:yramirez66/dbt-server
 ```
 
 STEP 2:
@@ -56,8 +56,8 @@ docker build -f Dockerfile . -t dbt-server-1.7.0:latest --build-arg DBT_CORE_VER
 
 Push local docker image to Google cloud artifact registry by running the following commands:
 ```
-    docker tag dbt-server-1.7.0:latest us-central1-docker.pkg.dev/iota-dev-66d-20231205/dbt-server/dbt_server_image:latest
-    docker push us-central1-docker.pkg.dev/iota-dev-66d-20231205/dbt-server/dbt_server_image:latest
+docker tag dbt-server-1.7.0:latest us-central1-docker.pkg.dev/iota-dev-66d-20231205/dbt-server/dbt_server_image:latest
+docker push us-central1-docker.pkg.dev/iota-dev-66d-20231205/dbt-server/dbt_server_image:latest
 ```
 
 # Configure Cloud Run
